@@ -69,6 +69,7 @@ function WriteAnswer() {
   );
 }
 
+// 주제와 관련된 질문 1개
 export default function Question({ id, content }: QuestionProps) {
   // 상태 관리
   const [showTool, setShowTool] = useState<boolean>(false);
