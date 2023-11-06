@@ -5,6 +5,7 @@ interface accessTokenProps {
   expireDate: number;
 }
 
+// 로그인 후 accessToken을 저장해두는 atom
 export const accessTokenState = atom<accessTokenProps>({
   key: "accessTokenState",
   default: {

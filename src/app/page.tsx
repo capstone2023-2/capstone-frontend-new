@@ -1,4 +1,4 @@
-import { RandomQuestionPart } from "./_random-question";
+import { RandomQuestionPart } from "./_random-questions";
 import { TopicListPart } from "./_topic-list";
 
 export default function MainPage() {

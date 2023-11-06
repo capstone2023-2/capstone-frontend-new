@@ -1,21 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import Topic from "./topic";
+import Topic, { TopicProps } from "./topic";
 
+// 메인 화면의 주제 리스트
 export default function TopicList() {
-  const [topicNameList, setTopicNameList] = useState<string[]>([
-    "aa",
-    "bb",
-    "cc",
-    "dd",
-    "ee",
+  const [topicList, setTopicList] = useState<TopicProps[]>([
+    {
+      name: "aa",
+      nameTranslated: "aa",
+    },
+    {
+      name: "bb",
+      nameTranslated: "bb",
+    },
+    {
+      name: "cc",
+      nameTranslated: "cc",
+    },
+    {
+      name: "dd",
+      nameTranslated: "dd",
+    },
+    {
+      name: "ee",
+      nameTranslated: "ee",
+    },
   ]);
 
   return (
     <div className="hbox(center) flex-wrap relative w(100%) gap(16)">
-      {topicNameList?.map((topicName) => {
-        return <Topic key={topicName} name={topicName} />;
+      {topicList?.map((topic) => {
+        return (
+          <Topic
+            key={topic.name}
+            name={topic.name}
+            nameTranslated={topic.nameTranslated}
+          />
+        );
       })}
     </div>
   );
