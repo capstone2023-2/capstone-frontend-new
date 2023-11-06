@@ -1,0 +1,46 @@
+{
+  "name": "2023-02-capstone",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "set PORT=3002 && next dev",
+    "build": "next build",
+    "start": "set PORT=3002 && next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "@uiw/react-markdown-preview": "^4.1.16",
+    "@uiw/react-md-editor": "^3.23.6",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "next": "13.4.19",
+    "next-remove-imports": "^1.0.12",
+    "node-sass": "^9.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
+    "react-responsive": "^9.0.2",
+    "react-toggle-dark-mode": "^1.1.1",
+    "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
+    "swiper": "^11.0.3",
+    "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "adorable-css": "^1.4.5",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.66.1",
+    "svg-url-loader": "^8.0.0"
+  }
+}

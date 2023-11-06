@@ -1,0 +1,199 @@
+// 기초 색상, 폰트 기초 설정 및 배율
+:root {
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --negative: #E11900;
+  --positive: #048848;
+  --warning: #FFC043;
+
+  font-family: Pretendard;
+  font-size: 18px;
+  --font-scale: 1.333;
+}
+
+:root {
+  --blue-100: #DFE9FC;
+  --blue-200: #BED3F9;
+  --blue-300: #9EBCF5;
+  --blue-400: #7DA6F2;
+  --blue-500: #5D90EF;
+  --blue-600: #4A73BF;
+  --blue-700: #38568F;
+  --blue-800: #253A60;
+  --blue-900: #131D30;
+  --gray-100: #E1E1E1;
+  --gray-200: #C4C4C4;
+  --gray-300: #A6A6A6;
+  --gray-400: #898989;
+  --gray-500: #6B6B6B;
+  --gray-600: #565656;
+  --gray-700: #404040;
+  --gray-800: #2B2B2B;
+  --gray-900: #151515;
+}
+
+
+// 라이트, 다크 테마
+:root[data-color-mode='light'] { 
+  --primary: var(--black);
+  --secondary: var(--white);
+  --tertiary: #F5F5F5;
+  --accent: var(--blue-500);
+  --accent-emphasized: var(--blue-700);
+  --content-primary: var(--black);
+  --content-secondary: var(--gray-500);
+  --content-tertiary: var(--gray-300);
+
+  // 글 작성 부분 (별도의 컴포넌트라 따로 설정)
+  --write-border: #D0D7DE; // 테두리
+  --write-background: var(--secondary);
+
+  // 필터
+  --filter-primary: brightness(0) saturate(100%) invert(0%) sepia(62%) saturate(1438%) hue-rotate(208deg) brightness(56%) contrast(80%);
+  --filter-accent: brightness(0) saturate(100%) invert(55%) sepia(79%) saturate(2212%) hue-rotate(197deg) brightness(98%) contrast(92%);
+  --filter-content-secondary: brightness(0) saturate(100%) invert(46%) sepia(0%) saturate(1276%) hue-rotate(152deg) brightness(88%) contrast(85%);
+}
+
+:root[data-color-mode='dark'] {
+  --primary: var(--white);
+  --secondary: var(--black);
+  --tertiary: var(--gray-800);
+  --accent: var(--blue-600);
+  --accent-emphasized: var(--blue-400);
+  --content-primary: var(--white);
+  --content-secondary: var(--gray-300);
+  --content-tertiary: var(--gray-400);
+
+  // 글 작성 부분 (별도의 컴포넌트라 따로 설정)
+  --write-border: #30363D;
+  --write-background: #0D1117;
+
+  // 필터
+  --filter-primary: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  --filter-accent: brightness(0) saturate(100%) invert(48%) sepia(43%) saturate(1048%) hue-rotate(186deg) brightness(81%) contrast(81%);
+  --filter-content-secondary: brightness(0) saturate(100%) invert(71%) sepia(16%) saturate(0%) hue-rotate(279deg) brightness(93%) contrast(82%);
+}
+
+
+// 텍스트 종류
+.label {
+  font-weight: 600;
+  line-height: 140%;
+  letter-spacing: -1px;
+}
+
+.paragraph {
+  font-weight: 400;
+  line-height: 140%;
+}
+
+
+// 텍스트 크기
+.text-small {
+  font-size: calc(1em / var(--font-scale));
+}
+
+.text-medium {
+  font-size: 1em;
+}
+
+.text-large {
+  font-size: calc(1em * var(--font-scale));
+}
+
+.text-xl {
+  font-size: calc(1em * var(--font-scale) * var(--font-scale));
+}
+
+.text-xxl {
+  font-size: calc(1em * var(--font-scale) * var(--font-scale) * var(--font-scale));
+}
+
+.text-xxxl {
+  font-size: calc(1em * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+}
+
+
+// 필터 (기본)
+.filter-black {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(62%) saturate(1438%) hue-rotate(208deg) brightness(56%) contrast(80%);
+}
+
+.filter-white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
+
+.filter-negative {
+  // 에러 등 부정적인 컬러
+  filter: brightness(0) saturate(100%) invert(26%) sepia(32%) saturate(7174%) hue-rotate(357deg) brightness(82%) contrast(118%);
+}
+
+.filter-blue-500 {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(93%) saturate(2337%) hue-rotate(200deg) brightness(103%) contrast(87%);
+}
+
+
+// 필터 (모드별)
+.filter-primary {
+  // 주요 컬러
+  filter: var(--filter-primary);
+}
+
+.filter-accent {
+  // 포인트 컬러
+  filter: var(--filter-accent);
+}
+
+.filter-content-secondary {
+  // 부가 정보 컬러 1
+  filter: var(--filter-content-secondary);
+}
+
+
+// 스크롤바
+html {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-500);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-700);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-300);
+}
+
+
+// 배너(Swiper) 커스터마이징
+.swiper {
+  --swiper-theme-color: var(--primary);
+}
+
+.swiper-slide {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--accent) !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  filter: var(--filter-accent);
+}
