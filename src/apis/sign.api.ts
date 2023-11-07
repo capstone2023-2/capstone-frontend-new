@@ -1,6 +1,8 @@
 import API_URL from ".";
-import { accessTokenState } from "@/store";
+import { setCookie } from ".";
 import { useSetRecoilState, useRecoilValue } from "recoil";
+import { jwtDecode } from "jwt-decode";
+import { accessTokenProps, accessTokenState } from "@/store";
 
 
 // 로그인
@@ -12,7 +14,7 @@ interface signInInformationType {
 export async function signIn({
   email,
   password,
-}: signInInformationType): Promise<string | null> {
+}: signInInformationType): Promise<accessTokenProps | null> {
   const request = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: {
@@ -22,13 +24,27 @@ export async function signIn({
       email: email,
       password: password,
     }),
+    credentials: "same-origin",
   });
 
-  console.log(request);
-
   if (request.status == 200) {
-    const response = await request.json();  
-    return response;
+    // 로그인에 성공하면 accessToken과 refreshToken을 JWT 형태로 전달받습니다.
+    // refreshToken은 "" 형태로 전달되며, 쿠키에 저장합니다.
+    const refreshTokenJWT = request.headers.get("Set-Cookie")?.substring(7);
+    console.log(refreshTokenJWT);
+
+    // accessToken은 "Bearer ..." 형태로 전달됩니다.
+    const accessTokenJWT = request.headers.get("Authorization")?.substring(7);
+    if (accessTokenJWT) {
+      const accessTokenDecoded = jwtDecode(accessTokenJWT);
+      const accessTokenData: accessTokenProps = {
+        accessToken: accessTokenJWT,
+        expireDate: accessTokenDecoded.exp!,
+      }
+      return accessTokenData;
+    } else {
+      return null;
+    }
   } else {
     return null;
   }

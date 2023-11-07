@@ -2,9 +2,10 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useSetRecoilState } from "recoil";
 import { signIn } from "@/apis";
+import { accessTokenState } from "@/store";
 
 // 로그인 에러 컴포넌트
 function SignInError() {
@@ -19,8 +20,13 @@ function SignInError() {
 
 // 로그인
 export default function SignInPage() {
-  // 페이지 이동
+  // 페이지 이동 및 쿼리 스트링
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectURL = searchParams.get("redirect") ?? "";
+
+  // 액세스 토큰
+  const setAccessToken = useSetRecoilState(accessTokenState);
 
   // 입력창
   const [email, setEmail] = useState<string>("");
@@ -49,7 +55,12 @@ export default function SignInPage() {
     // 로그인에 성공하면 메인 페이지로 돌아갑니다.
     // ToDo: Redirect URL이 지정되어 있다면 해당 URL로 이동합니다.
     if (data) {
-      router.push("/");
+      setAccessToken(data);
+      if (redirectURL) {
+        router.push(`${redirectURL}`);
+      } else {
+        router.push("/");
+      }
     } else {
       setLoginFailed(true);
     }
@@ -74,7 +85,7 @@ export default function SignInPage() {
             type="text"
             name="id"
             id="id"
-            className="paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1)"
+            className="paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent)"
             value={email}
             onChange={handleEmail}
             autoFocus
@@ -91,7 +102,7 @@ export default function SignInPage() {
             type="password"
             name="password"
             id="password"
-            className="paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1)"
+            className="paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent)"
             value={password}
             onChange={handlePassword}
           ></input>

@@ -149,7 +149,7 @@ export default function SignUpPage() {
           type="text"
           name="id"
           id="id"
-          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1) ${
+          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent) ${
             wrongEmail ? "b(2/solid/--negative)+my(-1)" : ""
           }`}
           value={email}
@@ -181,7 +181,7 @@ export default function SignUpPage() {
           type="text"
           name="nickname"
           id="nickname"
-          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1) ${
+          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent) ${
             wrongNickname ? "b(2/solid/--negative)+my(-1)" : ""
           }`}
           value={nickname}
@@ -210,7 +210,7 @@ export default function SignUpPage() {
           type="password"
           name="password"
           id="password"
-          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1) ${
+          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent) ${
             wrongPassword ? "b(2/solid/--negative)+my(-1)" : ""
           }`}
           value={password}
@@ -236,7 +236,7 @@ export default function SignUpPage() {
           type="password"
           name="password-confirm"
           id="password-confirm"
-          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(2/solid/--accent)+my(-1) ${
+          className={`paragraph text-medium c(--black) b(1/solid/--primary) outline(none) r(4) p(4/12) nowrap... focus:b(1/solid/--accent) ${
             wrongPasswordConfirm ? "b(2/solid/--negative)+my(-1)" : ""
           }`}
           value={passwordConfirm}

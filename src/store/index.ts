@@ -1,3 +1,4 @@
-import { accessTokenState } from "./store";
+import { accessTokenProps, accessTokenState } from "./store";
 
 export { accessTokenState };
+export type { accessTokenProps };

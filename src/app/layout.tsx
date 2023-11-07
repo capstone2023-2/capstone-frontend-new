@@ -1,6 +1,7 @@
 "use client";
 
 import { RecoilRoot } from "recoil";
+import { CookiesProvider } from "react-cookie";
 import RootInnerLayout from "./inner-layout";
 
 export default function RootLayout({
@@ -10,7 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <RecoilRoot>
-      <RootInnerLayout>{children}</RootInnerLayout>
+      <CookiesProvider>
+        <RootInnerLayout>{children}</RootInnerLayout>
+      </CookiesProvider>
     </RecoilRoot>
   );
 }

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-interface accessTokenProps {
+export interface accessTokenProps {
   accessToken: string;
   expireDate: number;
 }
