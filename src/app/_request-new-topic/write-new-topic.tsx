@@ -53,7 +53,7 @@ export default function WriteNewTopic() {
           onChange={handleContent}
         ></input>
         <button className="paragraph text-small text-center h(100%) b(1/solid/--content-secondary) c(--content-secondary) rr(4) p(4/12) hover:b(1/solid/--accent)+c(--accent)">
-          요청
+          신청
         </button>
       </form>
       {successMessage ? <SubmitSuccess topicName={successMessage} /> : <></>}
