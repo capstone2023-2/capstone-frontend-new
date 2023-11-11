@@ -24,7 +24,7 @@ export async function signIn({
       email: email,
       password: password,
     }),
-    credentials: "same-origin",
+    credentials: "include",
   });
 
   if (request.status == 200) {

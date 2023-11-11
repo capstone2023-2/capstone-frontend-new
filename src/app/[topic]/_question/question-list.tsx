@@ -14,14 +14,15 @@ export default function QuestionList({ name }: { name: string }) {
       const questionListData = getTopic({name});
       questionListData.then(
         (questionList) => {
-          console.log(questionList);
-          questionList?.forEach(questionData => {
-            setQuestionList(prev => [...prev, {
+          const newQuestionList = questionList?.map((questionData) => {
+            const result: QuestionProps = {
               id: questionData.id,
               content: questionData.question,
               answer: questionData.answer,
-            }]);
-          })
+            };
+            return result;
+          });
+          setQuestionList(newQuestionList ?? []);
         }
       );
     }
