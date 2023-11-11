@@ -6,7 +6,7 @@ import { accessTokenProps, accessTokenState } from "@/store";
 
 
 // 로그인
-interface signInInformationType {
+interface SignInInformationType {
   email: string;
   password: string;
 }
@@ -14,7 +14,7 @@ interface signInInformationType {
 export async function signIn({
   email,
   password,
-}: signInInformationType): Promise<accessTokenProps | null> {
+}: SignInInformationType): Promise<accessTokenProps | null> {
   const request = await fetch(`${API_URL}/auth/login`, {
     method: "POST",
     headers: {
@@ -54,7 +54,7 @@ export async function signIn({
 export async function signInOld({
   email,
   password,
-}: signInInformationType): Promise<string | null> {
+}: SignInInformationType): Promise<string | null> {
   const request = await fetch(`${API_URL}/users/login`, {
     method: "POST",
     headers: {

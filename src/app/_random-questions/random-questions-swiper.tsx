@@ -18,38 +18,48 @@ export default function RandomQuestionSwiper() {
   >([
     {
       question: {
-        id: 1,
-        content: "11",
+        id: 28,
+        content: "Segmentation(세그멘테이션)",
+        answer: "",
       },
-      topicName: "aa",
+      topicName: "operatingsystem",
+      topicNameTranslated: "OperatingSystem",
     },
     {
       question: {
         id: 2,
         content: "22",
+        answer: "",
       },
       topicName: "bb",
+      topicNameTranslated: "bb",
     },
     {
       question: {
         id: 3,
         content: "33",
+        answer: "",
       },
       topicName: "cc",
+      topicNameTranslated: "cc",
     },
     {
       question: {
         id: 4,
         content: "44",
+        answer: "",
       },
       topicName: "dd",
+      topicNameTranslated: "dd",
     },
     {
       question: {
         id: 5,
         content: "55",
+        answer: "",
       },
       topicName: "ee",
+      topicNameTranslated: "ee",
     },
   ]);
 
@@ -77,6 +87,7 @@ export default function RandomQuestionSwiper() {
               <RandomQuestion
                 question={randomQuestion.question}
                 topicName={randomQuestion.topicName}
+                topicNameTranslated={randomQuestion.topicNameTranslated}
               />
             </SwiperSlide>
           );

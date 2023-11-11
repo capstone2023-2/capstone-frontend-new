@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ExampleAnswer, QuestionContent, WriteAnswer } from ".";
+import { getTopic } from "@/apis";
 
 export interface QuestionProps {
   id: number;
   content: string;
+  answer: string;
 }
 
 // 주제와 관련된 질문 1개
-export default function Question({ id, content }: QuestionProps) {
+export default function Question({ id, content, answer }: QuestionProps) {
   // 상태 관리
   const [showTool, setShowTool] = useState<boolean>(false);
   const [showExampleAnswer, setShowExampleAnswer] = useState<boolean>(false);
@@ -51,12 +53,13 @@ export default function Question({ id, content }: QuestionProps) {
         question={{
           id: id,
           content: content,
+          answer: answer,
         }}
         onClick={() => setShowTool((prev) => !prev)}
       />
       {showTool ? <QuestionTool /> : <></>}
-      {(showTool && showExampleAnswer) ? <ExampleAnswer id={id} /> : <></>}
-      {(showTool && showWriteAnswer) ? <WriteAnswer id={id}/> : <></>}
+      {(showTool && showExampleAnswer) ? <ExampleAnswer id={id} content={answer} /> : <></>}
+      {(showTool && showWriteAnswer) ? <WriteAnswer id={id} /> : <></>}
     </div>
   );
 }

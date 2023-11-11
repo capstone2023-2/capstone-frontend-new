@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { TopicProps } from "../_topic-list";
-import { Question } from "./_question";
 import QuestionList from "./_question/question-list";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 
 // API 호출을 통해 다음 형태의 데이터를 받아온다고 가정
 interface TopicPageProps {
@@ -20,19 +20,19 @@ const DUMMY_DATA: TopicPageProps = {
 
 // 특정 주제의 정보를 보여주는 페이지
 export default function TopicPage() {
+  // 라우팅 계열
+  const params = useParams();
+  const searchParams = useSearchParams();
+
+  const name = params['topic'] as string;
+  const nameTranslated = searchParams.get('nameTranslated');
+
   const [data, setData] = useState<TopicPageProps>({
     topicData: {
-      name: "",
-      nameTranslated: "",
+      name: name,
+      nameTranslated: nameTranslated ?? "",
     },
   });
-
-  useEffect(() => {
-    // 원래는 API를 통해 데이터를 가져옴
-    setData({
-      topicData: DUMMY_DATA.topicData,
-    });
-  }, []);
 
   return (
     <>
@@ -41,8 +41,7 @@ export default function TopicPage() {
         <p className="label text-xl c(--primary)">
           {data.topicData.nameTranslated}
         </p>
-        {/* 질문 및 답변 목록 */}
-        <QuestionList />
+        <QuestionList name={data.topicData.name} />
       </div>
     </>
   );
