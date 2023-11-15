@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useRecoilValue } from "recoil";
 import { accessTokenState } from "@/store";
 
@@ -9,6 +9,8 @@ export default function Profile() {
   // URL 설정
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const nameTranslated = searchParams.get("nameTranslated");
 
   // 액세스 토큰
   const accessTokenData = useRecoilValue(accessTokenState);
@@ -31,7 +33,11 @@ export default function Profile() {
     if (pathname == "/") {
       router.push("/sign-in");
     } else {
-      router.push(`/sign-in?redirect=${pathname}`);
+      if (nameTranslated) {
+        router.push(`/sign-in?redirect=${pathname}?nameTranslated=${nameTranslated}`);
+      } else {
+        router.push(`/sign-in?redirect=${pathname}`);
+      }
     }
   }
 
