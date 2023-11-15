@@ -5,7 +5,7 @@ import { RequestNewTopicPart } from "./_request-new-topic";
 export default function MainPage() {
   return (
     <>
-      <title>CStation</title>
+      <title>CS-Essence</title>
       <div className="vbox w(100%) gap(80)">
         <RandomQuestionPart />
         <TopicListPart />

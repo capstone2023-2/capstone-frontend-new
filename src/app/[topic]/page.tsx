@@ -36,7 +36,7 @@ export default function TopicPage() {
 
   return (
     <>
-      <title>{`${data.topicData.nameTranslated} - CStation`}</title>
+      <title>{`${data.topicData.nameTranslated} - CS-Essence`}</title>
       <div className="vbox(center) w(100%) gap(40)">
         <p className="label text-xl c(--primary)">
           {data.topicData.nameTranslated}
