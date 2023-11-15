@@ -11,7 +11,7 @@ function Logo() {
         >
           <span>C</span>
           <span className="c(--accent) group-hover:c(--primary) transition(color=.35s)">S</span>
-          <span>tation</span>
+          <span>-Essence</span>
         </Link>
       </nav>
   )
