@@ -19,12 +19,7 @@ export default function AnswerHistory({
 }) {
   // 상태 관리
   const [data, setData] = useState<GetAnswerHistoryDataType>({
-    result: [
-      {
-        answer: "",
-        createdAt: "",
-      },
-    ],
+    result: [],
   });
   const accessTokenValue = useRecoilValue(accessTokenState);
 
@@ -56,27 +51,33 @@ export default function AnswerHistory({
         답안 히스토리
       </p>
       <div className="vbox gap(8) py(4)">
-        {data.result?.map((answerHistory) => {
-          return (
-            <div
-              key={`${topicName}/${id}/${answerHistory.createdAt}`}
-              className="vbox py(4)"
-            >
-              <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
-                {answerHistory.answer}
-              </p>
-              <p className="paragraph text-small c(--content-secondary)">
-                {`${answerHistory.createdAt.substring(
-                  0,
-                  answerHistory.createdAt.indexOf("T")
-                )}  ${answerHistory.createdAt.substring(
-                  answerHistory.createdAt.indexOf("T") + 1,
-                  answerHistory.createdAt.indexOf(".")
-                )}`}
-              </p>
-            </div>
-          );
-        })}
+        {data.result?.length == 0 ? (
+          <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
+            현재 히스토리가 없습니다.
+          </p>
+        ) : (
+          data.result?.map((answerHistory) => {
+            return (
+              <div
+                key={`${topicName}/${id}/${answerHistory.createdAt}`}
+                className="vbox py(4)"
+              >
+                <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
+                  {answerHistory.answer}
+                </p>
+                <p className="paragraph text-small c(--content-secondary)">
+                  {`${answerHistory.createdAt.substring(
+                    0,
+                    answerHistory.createdAt.indexOf("T")
+                  )}  ${answerHistory.createdAt.substring(
+                    answerHistory.createdAt.indexOf("T") + 1,
+                    answerHistory.createdAt.indexOf(".")
+                  )}`}
+                </p>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
