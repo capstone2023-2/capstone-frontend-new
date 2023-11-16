@@ -13,7 +13,12 @@ export interface QuestionProps {
 }
 
 // 주제와 관련된 질문 1개
-export default function Question({ id, topic, content, answer }: QuestionProps) {
+export default function Question({
+  id,
+  topic,
+  content,
+  answer,
+}: QuestionProps) {
   // 상태 관리
   const accessTokenValue = useRecoilValue(accessTokenState);
   const [showTool, setShowTool] = useState<boolean>(false);
@@ -25,12 +30,12 @@ export default function Question({ id, topic, content, answer }: QuestionProps) 
   function QuestionTool() {
     return (
       <div className="hbox(reverse) gap(20)">
-       <p
+        <p
           className={`paragraph text-small ${
-            accessTokenValue.accessToken ? "c(--content-secondary) pointer hover:c(--accent)" : "c(--content-tertiary) user-select-none"
-          } ${
-            showAnswerHistory ? "c(--accent-emphasized)" : ""
-          } `}
+            accessTokenValue.accessToken
+              ? "c(--content-secondary) pointer hover:c(--accent)"
+              : "c(--content-tertiary) user-select-none"
+          } ${showAnswerHistory ? "c(--accent-emphasized)" : ""} `}
           onClick={() => {
             if (accessTokenValue.accessToken) {
               setShowAnswerHistory((prev) => !prev);
@@ -62,7 +67,9 @@ export default function Question({ id, topic, content, answer }: QuestionProps) 
   return (
     <div
       id={id.toString()}
-      className="vbox w(100%) b(1/solid/transparent) r(8) p(12/20) gap(8) hover:b(1/solid/--accent)"
+      className={`vbox w(100%) b(1/solid/transparent) r(8) p(12/20) gap(8) ${
+        showTool ? "b(1/solid/--accent)" : ""
+      } hover:b(1/solid/--accent)`}
     >
       <QuestionContent
         question={{
@@ -74,9 +81,21 @@ export default function Question({ id, topic, content, answer }: QuestionProps) 
         onClick={() => setShowTool((prev) => !prev)}
       />
       {showTool ? <QuestionTool /> : <></>}
-      {(showTool && showExampleAnswer) ? <ExampleAnswer id={id} content={answer} /> : <></>}
-      {(showTool && showWriteAnswer) ? <WriteAnswer id={id} topicName={topic} /> : <></>}
-      {(showTool && showAnswerHistory) ? <AnswerHistory id={id} topicName={topic} /> : <></> }
+      {showTool && showExampleAnswer ? (
+        <ExampleAnswer id={id} content={answer} />
+      ) : (
+        <></>
+      )}
+      {showTool && showWriteAnswer ? (
+        <WriteAnswer id={id} topicName={topic} />
+      ) : (
+        <></>
+      )}
+      {showTool && showAnswerHistory ? (
+        <AnswerHistory id={id} topicName={topic} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
