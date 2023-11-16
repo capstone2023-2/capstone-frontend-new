@@ -45,10 +45,16 @@ export default function Question({
           답안 히스토리
         </p>
         <p
-          className={`paragraph text-small c(--content-secondary) pointer hover:c(--accent) ${
-            showWriteAnswer ? "c(--accent-emphasized)" : ""
-          }`}
-          onClick={() => setShowWriteAnswer((prev) => !prev)}
+          className={`paragraph text-small ${
+            accessTokenValue.accessToken
+              ? "c(--content-secondary) pointer hover:c(--accent)"
+              : "c(--content-tertiary) user-select-none"
+          } ${showWriteAnswer ? "c(--accent-emphasized)" : ""} `}
+          onClick={() => {
+            if (accessTokenValue.accessToken) {
+              setShowWriteAnswer((prev) => !prev);
+            }
+          }}
         >
           답안 작성
         </p>
