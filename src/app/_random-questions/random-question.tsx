@@ -12,6 +12,7 @@ export interface RandomQuestionProps {
 function RandomQuestion({
   question = {
     id: 0,
+    topic: "",
     content: "",
     answer: "",
   },

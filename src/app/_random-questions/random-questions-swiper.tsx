@@ -19,6 +19,7 @@ export default function RandomQuestionSwiper() {
     {
       question: {
         id: 28,
+        topic: "operatingsystem",
         content: "Segmentation(세그멘테이션)",
         answer: "",
       },
@@ -28,6 +29,7 @@ export default function RandomQuestionSwiper() {
     {
       question: {
         id: 2,
+        topic: "bb",
         content: "22",
         answer: "",
       },
@@ -37,6 +39,7 @@ export default function RandomQuestionSwiper() {
     {
       question: {
         id: 3,
+        topic: "cc",
         content: "33",
         answer: "",
       },
@@ -46,6 +49,7 @@ export default function RandomQuestionSwiper() {
     {
       question: {
         id: 4,
+        topic: "dd",
         content: "44",
         answer: "",
       },
@@ -55,6 +59,7 @@ export default function RandomQuestionSwiper() {
     {
       question: {
         id: 5,
+        topic: "ee",
         content: "55",
         answer: "",
       },
