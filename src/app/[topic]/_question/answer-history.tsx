@@ -50,7 +50,7 @@ export default function AnswerHistory({
       <p className="paragraph text-small c(--content-secondary)">
         답안 히스토리
       </p>
-      <div className="vbox gap(8) py(4)">
+      <div className="vbox gap(8)">
         {data.result?.length == 0 ? (
           <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
             현재 히스토리가 없습니다.
