@@ -41,7 +41,7 @@ export default function TopicPage() {
         <p className="label text-xl c(--primary)">
           {data.topicData.nameTranslated}
         </p>
-        <QuestionList name={data.topicData.name} />
+        <QuestionList topicName={data.topicData.name} />
       </div>
     </>
   );

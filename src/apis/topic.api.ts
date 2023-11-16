@@ -26,6 +26,7 @@ export async function getTopics() {
 // 토픽 내부 질문 하나의 데이터
 interface QuestionDataType {
   id: number;
+  topic: string;
   question: string;
   answer: string;
 }

@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 // 모범 답안
 export default function ExampleAnswer({ id, content }: { id: number, content: string }) {
   return (
