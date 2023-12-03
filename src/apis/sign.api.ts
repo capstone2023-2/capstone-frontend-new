@@ -87,7 +87,7 @@ export async function signUp({
   password,
   nickname,
 }: signUpInformationType): Promise<boolean> {
-  const request = await fetch(`${API_URL}/users/join`, {
+  const request = await fetch(`${API_URL}/auth/join`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -95,11 +95,12 @@ export async function signUp({
     body: JSON.stringify({
       email: email,
       password: password,
+      checkPassword: password,
       username: nickname,
     }),
   });
 
-  if (request.status == 200) {
+  if (request.status == 200 || request.status == 201) {
     return true;
   } else {
     return false;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { accessTokenState } from "@/store";
 
 // 프로필
@@ -13,7 +13,8 @@ export default function Profile() {
   const nameTranslated = searchParams.get("nameTranslated");
 
   // 액세스 토큰
-  const accessTokenData = useRecoilValue(accessTokenState);
+  const [accessTokenData, setAccessTokenData] =
+    useRecoilState(accessTokenState);
 
   // 디자인
   const [profileHover, setProfileHover] = useState<boolean>(false);
@@ -21,8 +22,12 @@ export default function Profile() {
   // 프로필 클릭
   function handleProfileClick() {
     if (accessTokenData.accessToken) {
-      // 로그인된 상태면 모달을 보여줍니다.
-      console.log(accessTokenData.accessToken);
+      // 로그인된 상태면 로그아웃합니다.
+      console.log(`Sign out from accessToken ${accessTokenData.accessToken}`);
+      setAccessTokenData({
+        accessToken: "",
+        expireDate: 0,
+      });
     } else {
       handleGotoSignIn();
     }
@@ -34,7 +39,9 @@ export default function Profile() {
       router.push("/sign-in");
     } else {
       if (nameTranslated) {
-        router.push(`/sign-in?redirect=${pathname}?nameTranslated=${nameTranslated}`);
+        router.push(
+          `/sign-in?redirect=${pathname}?nameTranslated=${nameTranslated}`
+        );
       } else {
         router.push(`/sign-in?redirect=${pathname}`);
       }

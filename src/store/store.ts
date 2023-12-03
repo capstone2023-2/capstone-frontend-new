@@ -1,4 +1,7 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 export interface accessTokenProps {
   accessToken: string;
@@ -12,4 +15,5 @@ export const accessTokenState = atom<accessTokenProps>({
     accessToken: "",
     expireDate: 0,
   },
+  effects_UNSTABLE: [persistAtom],
 });

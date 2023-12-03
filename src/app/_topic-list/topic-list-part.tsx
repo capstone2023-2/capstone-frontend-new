@@ -4,7 +4,7 @@ import { TopicList } from ".";
 export default function TopicListPart() {
   return (
     <div className="vbox(center) relative w(100%) gap(12)">
-      <p className="label text-xl c(--primary) user-select-none">더 많은 주제를 찾는다면?</p>
+      <p className="label text-xl c(--primary) user-select-none">원하는 주제를 찾아보세요!</p>
       <TopicList />
     </div>
   )
