@@ -21,7 +21,7 @@ export default function VideoRecorder({ showRealtime = false }: { showRealtime?:
   // 미디어 권한을 허용받고, 녹화를 시작합니다.
   const getMediaPermission = useCallback(async () => {
     try {
-      const videoConstraints = { audio: false, video: true };
+      const videoConstraints = { audio: true, video: true };
       const videoStream =
         await navigator.mediaDevices.getUserMedia(videoConstraints);
 
