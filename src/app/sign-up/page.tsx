@@ -135,6 +135,8 @@ export default function SignUpPage() {
   }
 
   return (
+    <>
+    <title>회원가입 - CS-Essence</title>
     <form
       className="vbox(right) w(500) py(40) mx(auto) gap(24) ~lg:w(~90vw)"
       method="post"
@@ -269,6 +271,8 @@ export default function SignUpPage() {
         </button>
       </div>
     </form>
+    </>
+    
   );
 }
 

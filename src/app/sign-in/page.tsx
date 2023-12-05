@@ -68,6 +68,7 @@ export default function SignInPage() {
 
   return (
     <>
+      <title>로그인 - CS-Essence</title>
       <form
         className="vbox(right) w(500) py(120) mx(auto) gap(24) ~lg:w(~90vw)"
         method="post"
