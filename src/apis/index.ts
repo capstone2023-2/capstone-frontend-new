@@ -1,4 +1,4 @@
-const API_URL = "http://3.36.234.136:8080/api/v1";
+const API_URL = "https://api.csessence.site:8080/api/v1";
 
 import { signIn, signInOld, signUp } from "./sign.api";
 import { setCookie, getCookie } from "./cookie.api";
