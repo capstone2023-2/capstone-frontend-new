@@ -7,6 +7,7 @@ export default function QuestionSpeaker({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
+    // 페이지가 로딩되면 바로 음성을 재생합니다.
     if (audioRef.current) {
       audioRef.current.play();
     }

@@ -42,7 +42,7 @@ export default function Working({
     <div className="vbox(center) gap(24)">
       <QuestionSpeaker src={audioSrc} />
       <div className="vbox(center)">
-        <p className="label text-xxl c(--primary) letter-spacing(-0.5px) user-select-none">
+        <p className="label text-xxl w(160) c(--primary) text-center letter-spacing(-0.5px) user-select-none">
           {String(Math.floor(time / 60)).padStart(2, "0")}:
           {String(time % 60).padStart(2, "0")}
         </p>
