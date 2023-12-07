@@ -4,6 +4,6 @@ import QuestionSpeaker from "./question-speaker";
 import Preparing from "./_pages/preparing";
 import Ready from "./_pages/ready";
 import Working from "./_pages/working";
-import Processing from "./_pages/processing";
+import InterviewResult from "./_pages/interview-result";
 
-export { VideoRecorder, RecordedVideo, QuestionSpeaker, Preparing, Ready, Working, Processing };
+export { VideoRecorder, RecordedVideo, QuestionSpeaker, Preparing, Ready, Working, InterviewResult };

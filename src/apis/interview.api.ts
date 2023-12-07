@@ -34,6 +34,10 @@ export async function getRandomQuestionFromRandomTopic(
   }
 }
 
+interface STTResultType {
+  transcripts: string[];
+}
+
 // 사용자가 작성한 답변을 MP4 파일 형태로 전송합니다.
 export async function sendAnswerAndWaitSTT(answerFile: File) {
   const formData = new FormData();
@@ -48,5 +52,10 @@ export async function sendAnswerAndWaitSTT(answerFile: File) {
     body: formData,
   });
 
-  console.log(request);
+  if (request.status == 200) {
+    const response = await request.json();
+    return response as STTResultType;
+  } else {
+    return null;
+  }
 }

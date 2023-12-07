@@ -1,11 +1,13 @@
 import { useRouter } from "next/navigation";
 
-export default function Processing({
+export default function InterviewResult({
   question,
   answer,
+  sttResult = "",
 }: {
   question: string;
   answer: string;
+  sttResult?: string;
 }) {
   const router = useRouter();
 
@@ -21,6 +23,12 @@ export default function Processing({
         <p className="label text-medium c(--primary)">모범 답안 (텍스트)</p>
         <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
           {answer}
+        </p>
+      </div>
+      <div className="vbox gap(4)">
+        <p className="label text-medium c(--primary)">답변 내용 (텍스트)</p>
+        <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
+          {sttResult ? sttResult : "현재 변환 중입니다."}
         </p>
       </div>
       <div className="vbox">
