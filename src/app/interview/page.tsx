@@ -40,7 +40,7 @@ export default function InterviewPage() {
   const [singleInterview, setSingleInterview] = useState<singleInterviewType>();
 
   // STT 결과물
-  const [transcript, setTranscript] = useState<string>();
+  const [transcript, setTranscript] = useState<string>("");
 
   useEffect(() => {
     // 만약 녹화된 비디오가 초기화되지 않은 상태라면, 초기화시키면서 메모리 누수를 방지합니다.
@@ -86,18 +86,25 @@ export default function InterviewPage() {
 
             // API를 통해 STT를 진행합니다.
             const transcirptsPromise = sendAnswerAndWaitSTT(recordedVideoMp4);
-            transcirptsPromise.then(transcriptsResult => {
+            transcirptsPromise.then((transcriptsResult) => {
               // 결과값을 성공적으로 받아오면 사용자의 답변 내용을 텍스트로 설정하고,
               // 모의 면접 단계를 "Finished"로 변경합니다.
               if (transcriptsResult) {
-                let resultString = "";
-                for (const transcriptString of transcriptsResult.transcripts) {
-                  resultString += transcriptString;
+                if (transcriptsResult.transcripts.length != 0) {
+                  let resultString = "";
+                  for (const transcriptString of transcriptsResult.transcripts) {
+                    resultString += transcriptString;
+                  }
+                  setTranscript(resultString);
+                  setInterviewProgress({
+                    progress: "finished",
+                  });
+                } else {
+                  setTranscript("인식된 음성이 없습니다.");
+                  setInterviewProgress({
+                    progress: "finished",
+                  });
                 }
-                setTranscript(resultString);
-                setInterviewProgress({
-                  progress: "finished",
-                });
               } else {
                 setTranscript("인식된 음성이 없습니다.");
                 setInterviewProgress({
@@ -143,7 +150,7 @@ export default function InterviewPage() {
                 answer={singleInterview?.answer!}
                 sttResult={transcript}
               />
-            )
+            ),
           }[interviewProgress.progress as string]
         }
       </div>
