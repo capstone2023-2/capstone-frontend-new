@@ -76,42 +76,46 @@ export default function InterviewPage() {
             ).padStart(2, "0")}${String(now.getSeconds()).padStart(2, "0")}`;
             const filename = `${ymd}_${hms}.mp4`;
 
-            // objectURL에서 Blob을 가져와 mp4로 변환합니다.
-            const recordedVideoBlob = await fetch(recordedVideoUrl).then(
-              (res) => res.blob()
-            );
-            const recordedVideoMp4 = new File([recordedVideoBlob], filename, {
-              type: "video/mp4",
-            });
-
-            // API를 통해 STT를 진행합니다.
-            const transcirptsPromise = sendAnswerAndWaitSTT(recordedVideoMp4);
-            transcirptsPromise.then((transcriptsResult) => {
-              // 결과값을 성공적으로 받아오면 사용자의 답변 내용을 텍스트로 설정하고,
-              // 모의 면접 단계를 "Finished"로 변경합니다.
-              if (transcriptsResult) {
-                if (transcriptsResult.transcripts.length != 0) {
-                  let resultString = "";
-                  for (const transcriptString of transcriptsResult.transcripts) {
-                    resultString += transcriptString;
+            try {
+              // objectURL에서 Blob을 가져와 mp4로 변환합니다.
+              const recordedVideoBlob = await fetch(recordedVideoUrl).then(
+                (res) => res.blob()
+              );
+              const recordedVideoMp4 = new File([recordedVideoBlob], filename, {
+                type: "video/mp4",
+              });
+              
+              // API를 통해 STT를 진행합니다.
+              const transcirptsPromise = sendAnswerAndWaitSTT(recordedVideoMp4);
+              transcirptsPromise.then((transcriptsResult) => {
+                // 결과값을 성공적으로 받아오면 사용자의 답변 내용을 텍스트로 설정하고,
+                // 모의 면접 단계를 "Finished"로 변경합니다.
+                if (transcriptsResult) {
+                  if (transcriptsResult.transcripts.length != 0) {
+                    let resultString = "";
+                    for (const transcriptString of transcriptsResult.transcripts) {
+                      resultString += transcriptString;
+                    }
+                    setTranscript(resultString);
+                    setInterviewProgress({
+                      progress: "finished",
+                    });
+                  } else {
+                    setTranscript("인식된 음성이 없습니다.");
+                    setInterviewProgress({
+                      progress: "finished",
+                    });
                   }
-                  setTranscript(resultString);
-                  setInterviewProgress({
-                    progress: "finished",
-                  });
                 } else {
                   setTranscript("인식된 음성이 없습니다.");
                   setInterviewProgress({
                     progress: "finished",
                   });
                 }
-              } else {
-                setTranscript("인식된 음성이 없습니다.");
-                setInterviewProgress({
-                  progress: "finished",
-                });
-              }
-            });
+              });
+            } catch (e) {
+              console.log(e);
+            }
             break;
           }
       }
@@ -140,12 +144,14 @@ export default function InterviewPage() {
             working: <Working audioSrc={singleInterview?.audio!} />,
             processing: (
               <InterviewResult
+                topic={singleInterview?.topic!}
                 question={singleInterview?.question!}
                 answer={singleInterview?.answer!}
               />
             ),
             finished: (
               <InterviewResult
+                topic={singleInterview?.topic!}
                 question={singleInterview?.question!}
                 answer={singleInterview?.answer!}
                 sttResult={transcript}

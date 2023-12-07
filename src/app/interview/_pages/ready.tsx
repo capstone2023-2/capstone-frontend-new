@@ -21,7 +21,7 @@ export default function Ready() {
           카메라가 보이는지, 말했을 때 본인의 목소리가 들리는지 확인해주세요.
         </p>
         <p className="paragraph text-medium c(--primary) letter-spacing(-0.5px)">
-          진행 버튼을 누르시면 모의 면접이 시작됩니다.
+          상단의 진행 버튼을 누르시면 질문이 재생되며 모의 면접이 시작됩니다.
         </p>
       </div>
     </div>

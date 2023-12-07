@@ -39,7 +39,7 @@ export default function Working({
   });
 
   return (
-    <div className="vbox(center) gap(24)">
+    <div className="vbox(center) gap(12)">
       <QuestionSpeaker src={audioSrc} />
       <div className="vbox(center)">
         <p className="label text-xxl w(160) c(--primary) text-center letter-spacing(-0.5px) user-select-none">
@@ -47,14 +47,14 @@ export default function Working({
           {String(time % 60).padStart(2, "0")}
         </p>
         <button
-          className="paragraph text-small c(--primary) letter-spacing(-0.5px) hover:c(--accent)"
+          className="paragraph text-medium c(--primary) letter-spacing(-0.5px) hover:c(--accent) translateY(-4)"
           onClick={() =>
             setInterviewProgress({
               progress: "finishRecording",
             })
           }
         >
-          종료
+          답변 종료
         </button>
       </div>
     </div>

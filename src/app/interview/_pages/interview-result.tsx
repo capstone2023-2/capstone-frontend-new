@@ -1,10 +1,12 @@
 import { useRouter } from "next/navigation";
 
 export default function InterviewResult({
+  topic,
   question,
   answer,
   sttResult = "",
 }: {
+  topic: string;
   question: string;
   answer: string;
   sttResult?: string;
@@ -14,19 +16,25 @@ export default function InterviewResult({
   return (
     <div className="vbox gap(36) pt(20)">
       <div className="vbox gap(4)">
-        <p className="label text-medium c(--primary)">질문 (텍스트)</p>
+        <p className="label text-medium c(--primary)">주제</p>
+        <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
+          {topic}
+        </p>
+      </div>
+      <div className="vbox gap(4)">
+        <p className="label text-medium c(--primary)">질문</p>
         <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
           {question}
         </p>
       </div>
       <div className="vbox gap(4)">
-        <p className="label text-medium c(--primary)">모범 답안 (텍스트)</p>
+        <p className="label text-medium c(--primary)">모범 답안</p>
         <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
           {answer}
         </p>
       </div>
       <div className="vbox gap(4)">
-        <p className="label text-medium c(--primary)">답변 내용 (텍스트)</p>
+        <p className="label text-medium c(--primary)">나의 답변</p>
         <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">
           {sttResult ? sttResult : "현재 변환 중입니다."}
         </p>
