@@ -98,6 +98,11 @@ export default function InterviewPage() {
                 setInterviewProgress({
                   progress: "finished",
                 });
+              } else {
+                setTranscript("인식된 음성이 없습니다.");
+                setInterviewProgress({
+                  progress: "finished",
+                });
               }
             });
             break;
