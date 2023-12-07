@@ -35,9 +35,9 @@ export async function getRandomQuestionFromRandomTopic(
 }
 
 // 사용자가 작성한 답변을 MP4 파일 형태로 전송합니다.
-export async function sendAnswerAndWaitSTT(file: File) {
+export async function sendAnswerAndWaitSTT(answerFile: File) {
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append("file", answerFile);
 
   const request = await fetch(`${STT_API_URL}/stt`, {
     method: "POST",

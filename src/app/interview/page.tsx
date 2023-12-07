@@ -60,19 +60,21 @@ export default function InterviewPage() {
     const handleSTT = async () => {
       switch (interviewProgress.progress) {
         case "processing":
-          // 모의 면접이 끝난 후 URL에서 Blob을 가져와 mp4로 변환하고, API를 통해 STT를 진행합니다.
-          const now = new Date();
-          const filename = `${now.getFullYear()}${now.getMonth()}${now.getDay()}_${now.getHours()}${
-            now.getMinutes
-          }${now.getHours}.mp4`;
-          const recordedVideoBlob = await fetch(recordedVideoUrl).then((res) =>
-            res.blob()
-          );
-          const recordedVideoMp4 = new File([recordedVideoBlob], filename, {
-            type: "video/mp4",
-          });
-          sendAnswerAndWaitSTT(recordedVideoMp4);
-          break;
+          if (recordedVideoUrl) {
+            // 모의 면접이 끝난 후 URL에서 Blob을 가져와 mp4로 변환하고, API를 통해 STT를 진행합니다.
+            const now = new Date();
+            const filename = `${now.getFullYear()}${now.getMonth()}${now.getDay()}_${now.getHours()}${
+              now.getMinutes
+            }${now.getHours}.mp4`;
+            const recordedVideoBlob = await fetch(recordedVideoUrl).then(
+              (res) => res.blob()
+            );
+            const recordedVideoMp4 = new File([recordedVideoBlob], filename, {
+              type: "video/mp4",
+            });
+            sendAnswerAndWaitSTT(recordedVideoMp4);
+            break;
+          }
       }
     };
     handleSTT();
