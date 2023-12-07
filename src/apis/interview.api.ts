@@ -38,6 +38,7 @@ export async function getRandomQuestionFromRandomTopic(
 export async function sendAnswerAndWaitSTT(answerFile: File) {
   const formData = new FormData();
   formData.append("file", answerFile);
+  console.log(answerFile);
 
   const request = await fetch(`${STT_API_URL}/stt`, {
     method: "POST",
