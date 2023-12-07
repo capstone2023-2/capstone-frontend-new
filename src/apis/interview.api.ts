@@ -42,9 +42,9 @@ export async function sendAnswerAndWaitSTT(answerFile: File) {
 
   const request = await fetch(`${STT_API_URL}/stt`, {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "multipart/form-data",
-    // },
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
     body: formData,
   });
 
