@@ -63,7 +63,14 @@ export default function InterviewPage() {
           if (recordedVideoUrl) {
             // 모의 면접이 끝난 후 URL에서 Blob을 가져와 mp4로 변환하고, API를 통해 STT를 진행합니다.
             const now = new Date();
-            const filename = `${now.getFullYear()}${now.getMonth()}${now.getDay()}_${now.getHours()}${now.getMinutes()}${now.getHours()}.mp4`;
+            const ymd = `${now.getFullYear()}${String(now.getMonth()).padStart(
+              2,
+              "0"
+            )}${String(now.getDay()).padStart(2, "0")}`;
+            const hms = `${String(now.getHours()).padStart(2, "0")}${String(
+              now.getMinutes()
+            ).padStart(2, "0")}${String(now.getSeconds()).padStart(2, "0")}`;
+            const filename = `${ymd}_${hms}.mp4`;
             const recordedVideoBlob = await fetch(recordedVideoUrl).then(
               (res) => res.blob()
             );
