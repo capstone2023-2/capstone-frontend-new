@@ -11,9 +11,12 @@ export default function VideoRecorder({
   muteVideo?: boolean;
 }) {
   // 상태 관리
+  // 모의 면접 단계
   const [interviewProgress, setInterviewProgress] = useRecoilState(
     interviewProgressState
-  ); // 모의 면접 단계
+  );
+
+  // 녹화된 비디오의 objectURL with Blob
   const setRecordedVideoUrl = useSetRecoilState(recordedVideoUrlState); // 녹화된 비디오
 
   // 실시간 비디오 및 녹화
@@ -81,8 +84,12 @@ export default function VideoRecorder({
 
         // 설정되어 있는 모든 스트림을 초기화합니다.
         // 녹화를 담당하는 mediaRecorder와, 오디오 및 비디오 전반을 담당하는 videoStream을 초기화해야 합니다.
-        mediaRecorder.current = null;
-        videoStreamRef.current!.getTracks().forEach((track) => track.stop());
+        if (mediaRecorder.current) {
+          mediaRecorder.current = null;
+        }
+        if (videoStreamRef.current) {
+          videoStreamRef.current.getTracks().forEach((track) => track.stop());
+        }
       };
     } catch (err) {
       // 에러 발생 시 (권한 거부 등) 콘솔에 해당 에러를 출력합니다.

@@ -9,7 +9,7 @@ export default function RecordedVideo() {
   );
 
   useEffect(() => {
-    // 녹화된 영상의 사용이 끝나면, 초기화시키면서 메모리 누수를 방지합니다.
+    // 녹화된 영상의 사용이 끝나면, URL을 초기화시키면서 메모리 누수를 방지합니다.
     return () => {
       URL.revokeObjectURL(recordedVideoUrl);
       setRecordedVideoUrl("");

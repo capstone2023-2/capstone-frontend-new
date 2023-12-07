@@ -1,5 +1,5 @@
 import { accessTokenProps } from "@/store";
-import API_URL from ".";
+import API_URL, { STT_API_URL } from ".";
 
 export interface singleInterviewType {
   id: number;
@@ -9,6 +9,7 @@ export interface singleInterviewType {
   audio: string; 
 }
 
+// 모의 면접에 사용할 랜덤 질문 1개를 가져옵니다. 
 export async function getRandomQuestionFromRandomTopic(
   accessTokenValue: accessTokenProps
 ) {
@@ -31,4 +32,20 @@ export async function getRandomQuestionFromRandomTopic(
   } else {
     return null;
   }
+}
+
+// 사용자가 작성한 답변을 MP4 파일 형태로 전송합니다.
+export async function sendAnswerAndWaitSTT(file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const request = await fetch(`${STT_API_URL}/stt`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+
+  console.log(request);
 }

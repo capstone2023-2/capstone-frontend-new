@@ -36,11 +36,11 @@ export const accessTokenState = atom<accessTokenProps>({
 4. finishRecording
 타이머 인터럽트나 사용자의 입력에 의해 모의 면접이 끝난 후이며, 모의 면접이 완료된 후 녹화된 영상의 URL을 만들어냅니다.
 
-4. Processing
+5. Processing
 녹화된 영상을 API에 보내 STT를 대기합니다.
 - 녹화된 비디오, 질문 및 모범 답안
 
-5. Finished
+6. Finished
 STT로 사용자가 대답한 내용을 받아온 상태입니다.
 - 녹화된 비디오, 질문 및 모범 답안, 사용자가 대답한 내용
 */

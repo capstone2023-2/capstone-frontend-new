@@ -1,4 +1,5 @@
 const API_URL = "https://api.csessence.site:8080/api/v1";
+const STT_API_URL = "https://stt.csessence.site";
 
 import { signIn, signInOld, signUp } from "./sign.api";
 import { setCookie, getCookie } from "./cookie.api";
@@ -12,10 +13,12 @@ import {
 import {
   getRandomQuestionFromRandomTopic,
   singleInterviewType,
+  sendAnswerAndWaitSTT
 } from "./interview.api";
 
 export default API_URL;
 export {
+  STT_API_URL,
   signIn,
   signInOld,
   signUp,
@@ -26,6 +29,7 @@ export {
   getAnswerHistory,
   writeAnswerToServer,
   getRandomQuestionFromRandomTopic,
+  sendAnswerAndWaitSTT
 };
 export type {
   AnswerHistoryType,
