@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import {
   getAnswerHistory,
-  AnswerHistoryType,
   GetAnswerHistoryDataType,
 } from "@/apis";
 import { accessTokenProps, accessTokenState } from "@/store";
