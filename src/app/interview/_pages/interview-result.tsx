@@ -14,7 +14,7 @@ export default function InterviewResult({
   const router = useRouter();
 
   return (
-    <div className="vbox gap(36) pt(20)">
+    <div className="vbox w(100%) gap(36) pt(20)">
       <div className="vbox gap(4)">
         <p className="label text-medium c(--primary)">주제</p>
         <p className="paragraph text-medium c(--primary) line-height(1.5) pre-line">

@@ -11,7 +11,7 @@ export default function LinkToInterview() {
 
   return (
     <div className="vbox(center) relative w(100%) gap(4)">
-      <p className="label text-xl c(--primary) user-select-none">
+      <p className="label text-xl text-center c(--primary) user-select-none">
         모의 면접을 해볼 수 있어요!
       </p>
       <p
